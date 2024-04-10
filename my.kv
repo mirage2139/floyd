@@ -1,0 +1,77 @@
+#:kivy 2.2.1
+<Bus_NUmber>:
+    
+    # Главный макет программы
+    MDBoxLayout:
+        orientation: 'horizontal'
+        # Левый блок где отображается названия остановки и список автобусов
+        MDBoxLayout:
+            size_hint_x: 0.5
+            name: "left"
+            orientation: 'vertical'
+            spacing: 0
+            MDLabel:
+                font_size: 100
+                text:"\ndirections_bus"
+                theme_font_name: "Custom"
+                font_name: "MaterialSymbols"
+                padding: (525, 0, 0, 0)
+                size_hint_y: 0.1
+            # Лэйбл для отображения названия остановки
+            MDLabel:
+            	font_size: 35
+                id: street_name
+                padding: (0, 0, 0, 0)
+                text: ""
+                size_hint_y: 0.1
+            # Лэйбл для отображения списка автобусов   
+            MDLabel:
+            	font_size: 30
+                padding: (0, 20, 0, -10)
+                id: list_label
+                text: ""
+                markup: True
+	        Image:
+	            id: gif
+	            size_hint: 1, 1
+
+        #Правый блок где отображается ближайший автобус и карта
+        MDBoxLayout:
+            MDGridLayout:
+                rows: 2
+                cols: 1
+                MDBoxLayout:
+                    size_hint_x: 0.1
+                    padding: "10dp"
+                    orientation: "vertical"
+                    MDLabel:
+                        font_size: 35
+                        padding: (110, 0, 0, 120)
+                        adaptive_height: True
+                        name: "Pr"
+                        text: "Следущее прибытие:"
+                    MDLabel: #Лэйбл с указанием ближайшего автобуса по времени и его времени
+                        font_size: 35
+                        id:first_bus
+                        padding: (110, 0, 0, 250)
+                        text:"Транспортное средство №"
+                    #Погода
+                    MDLabel:
+                        font_size: 100
+                        text:"thermometer  partly_cloudy_day  air humidity_percentage"
+                        theme_font_name: "Custom"
+                        font_name: "MaterialSymbols"
+                        padding: (110, 70, 0, 0)
+                        id:wico
+                    MDLabel:
+                        font_size: 30
+                        id:weather
+                        padding: (110, 180, 0, 0)
+                        text:"Температура               Погода                  Ветер                   Влажность" 
+
+
+                # Отображение карты
+                Image:
+                    id: map_png
+                    size_hint: 4,4
+                    source: 'graph\\map.png'
